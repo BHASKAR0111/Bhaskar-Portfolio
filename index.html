@@ -90,6 +90,35 @@
   .project-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--cyan-dim), transparent); opacity: 0; transition: opacity 0.3s; }
   .project-card:hover { border-color: var(--cyan); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,212,255,0.1); }
   .project-card:hover::before { opacity: 1; }
+
+  /* Featured card — spans full width, slightly elevated */
+  .project-card.featured {
+    grid-column: 1 / -1;
+    border-color: rgba(0,212,255,0.3);
+    background: linear-gradient(135deg, #111820 0%, #0d1e2c 100%);
+  }
+  .project-card.featured .project-name { font-size: 24px; }
+  .featured-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--cyan); background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25); border-radius: 20px;
+    padding: 4px 12px; margin-bottom: 16px;
+  }
+  .featured-badge::before { content: '●'; font-size: 8px; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .featured-stats {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    margin: 20px 0; padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .stat { display: flex; flex-direction: column; gap: 4px; }
+  .stat-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--cyan); }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
   .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
   .project-icon { width: 48px; height: 48px; background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
   .project-links { display: flex; gap: 12px; }
@@ -142,6 +171,8 @@
     .nav-links { display: none; }
     .hero, .content { padding: 100px 24px 60px; }
     .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: auto; }
+    .featured-stats { gap: 20px; }
     .contact-section { padding: 60px 24px; }
     footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
     .section-head { padding-top: 70px; }
@@ -178,8 +209,8 @@
 
 <div class="skills-strip">
   <div class="skills-track">
-    <span class="skill-pill">Python</span><span class="skill-pill">Machine Learning</span><span class="skill-pill">YOLOv8</span><span class="skill-pill">NLP</span><span class="skill-pill">Power BI</span><span class="skill-pill">SQL</span><span class="skill-pill">Pandas</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">OpenCV</span><span class="skill-pill">TextBlob</span><span class="skill-pill">Data Analytics</span><span class="skill-pill">Git / GitHub</span>
-    <span class="skill-pill">Python</span><span class="skill-pill">Machine Learning</span><span class="skill-pill">YOLOv8</span><span class="skill-pill">NLP</span><span class="skill-pill">Power BI</span><span class="skill-pill">SQL</span><span class="skill-pill">Pandas</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">OpenCV</span><span class="skill-pill">TextBlob</span><span class="skill-pill">Data Analytics</span><span class="skill-pill">Git / GitHub</span>
+    <span class="skill-pill">Python</span><span class="skill-pill">Machine Learning</span><span class="skill-pill">YOLOv8</span><span class="skill-pill">NLP</span><span class="skill-pill">Power BI</span><span class="skill-pill">SQL</span><span class="skill-pill">Pandas</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">OpenCV</span><span class="skill-pill">TextBlob</span><span class="skill-pill">Data Analytics</span><span class="skill-pill">Customer Churn</span><span class="skill-pill">Git / GitHub</span>
+    <span class="skill-pill">Python</span><span class="skill-pill">Machine Learning</span><span class="skill-pill">YOLOv8</span><span class="skill-pill">NLP</span><span class="skill-pill">Power BI</span><span class="skill-pill">SQL</span><span class="skill-pill">Pandas</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">OpenCV</span><span class="skill-pill">TextBlob</span><span class="skill-pill">Data Analytics</span><span class="skill-pill">Customer Churn</span><span class="skill-pill">Git / GitHub</span>
   </div>
 </div>
 
@@ -190,6 +221,50 @@
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
+
+    <!-- ✅ NEW: Customer Churn Analysis — Featured Full-Width Card -->
+    <div class="project-card featured">
+      <div class="featured-badge">Latest Project</div>
+      <div class="project-top">
+        <div class="project-icon">📡</div>
+        <div class="project-links">
+          <a href="https://github.com/BHASKAR0111/Telco-Customer-Churn-Analysis" target="_blank" class="project-link">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="project-name">Telco Customer Churn Analysis</div>
+      <p class="project-desc">End-to-end Power BI dashboard analyzing churn patterns across 7,000+ telecom customers — identifying at-risk segments by contract type, payment method, and internet service to drive data-backed retention strategies.</p>
+      <div class="featured-stats">
+        <div class="stat"><span class="stat-val">7,043</span><span class="stat-label">Customers Analyzed</span></div>
+        <div class="stat"><span class="stat-val">26.5%</span><span class="stat-label">Overall Churn Rate</span></div>
+        <div class="stat"><span class="stat-val">42.7%</span><span class="stat-label">Month-to-Month Churn</span></div>
+        <div class="stat"><span class="stat-val">45.3%</span><span class="stat-label">Electronic Check Churn</span></div>
+      </div>
+      <ul class="project-bullets">
+        <li>Built interactive Power BI dashboard covering churn KPIs, demographics, tenure distribution & churn drivers</li>
+        <li>Identified month-to-month contracts as highest churn segment (42.7%) vs two-year contracts (2.8%)</li>
+        <li>Discovered fiber optic users churn at 41.9% — flagging service quality as a key retention lever</li>
+        <li>Cleaned and transformed raw dataset (7,043 rows, 21 columns) using Power Query for accurate reporting</li>
+      </ul>
+      <div class="project-tags">
+        <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Data Cleaning</span><span class="tag">Dashboard Design</span><span class="tag">Customer Analytics</span>
+      </div>
+    </div>
+
+    <!-- Existing Projects -->
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">🌐</div>
+        <div class="project-links"><a href="https://github.com/BHASKAR0111/Rise-Now" target="_blank" class="project-link">GitHub ↗</a></div>
+      </div>
+      <div class="project-name">RiseNow — Career Comeback Toolkit</div>
+      <p class="project-desc">A motivational web toolkit helping job seekers find direction, resources, and confidence during tough career transitions.</p>
+      <ul class="project-bullets">
+        <li>Curated resources and guidance for job seekers</li>
+        <li>Clean, accessible UI built with HTML & CSS</li>
+        <li>Focused on real-world impact and user empathy</li>
+      </ul>
+      <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Web Dev</span></div>
+    </div>
     <div class="project-card">
       <div class="project-top">
         <div class="project-icon">🚗</div>
@@ -219,20 +294,6 @@
         <li>Polarity & subjectivity scoring for each comment</li>
       </ul>
       <div class="project-tags"><span class="tag">Python</span><span class="tag">TextBlob</span><span class="tag">NLP</span><span class="tag">YouTube API</span></div>
-    </div>
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon">🌐</div>
-        <div class="project-links"><a href="https://github.com/BHASKAR0111/Rise-Now" target="_blank" class="project-link">GitHub ↗</a></div>
-      </div>
-      <div class="project-name">RiseNow — Career Comeback Toolkit</div>
-      <p class="project-desc">A motivational web toolkit helping job seekers find direction, resources, and confidence during tough career transitions.</p>
-      <ul class="project-bullets">
-        <li>Curated resources and guidance for job seekers</li>
-        <li>Clean, accessible UI built with HTML & CSS</li>
-        <li>Focused on real-world impact and user empathy</li>
-      </ul>
-      <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Web Dev</span></div>
     </div>
   </div>
 
