@@ -28,7 +28,96 @@
       --fm:      'JetBrains Mono', monospace;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--fn); overflow-x: hidden; }
+    body { background: var(--bg); color: var(--text); font-family: var(--fn); overflow-x: hidden; cursor: none; }
+
+    /* ─── CUSTOM CURSOR ─── */
+    #cursor {
+      position: fixed; top:0; left:0; pointer-events:none; z-index:9999;
+      mix-blend-mode: normal;
+    }
+    .cursor-dot {
+      position: absolute;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(0,212,255,0.4);
+      transition: transform 0.1s, width 0.2s, height 0.2s;
+    }
+    .cursor-ring {
+      position: absolute;
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(0,212,255,0.5);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      transition: transform 0.08s, width 0.3s, height 0.3s, border-color 0.3s;
+    }
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring {
+      width: 56px; height: 56px;
+      border-color: var(--accent);
+      background: rgba(0,212,255,0.06);
+    }
+    body:has(a:hover) .cursor-dot,
+    body:has(button:hover) .cursor-dot {
+      transform: translate(-50%,-50%) scale(0);
+    }
+    a, button, .project-card { cursor: none; }
+
+    /* ─── SCROLL PROGRESS ─── */
+    #scrollProgress {
+      position: fixed; top:0; left:0; right:0; height:2px;
+      z-index:9998; background:transparent;
+    }
+    #scrollBar {
+      height:100%; width:0%;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      box-shadow: 0 0 8px var(--accent);
+      transition: width 0.1s linear;
+    }
+
+    /* ─── TYPEWRITER cursor blink ─── */
+    .tw-cursor {
+      display: inline-block;
+      width: 3px; height: 0.85em;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 0.9s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ─── STATS STRIP ─── */
+    .stats-strip {
+      position: relative; z-index:10;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(7,12,18,0.95);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .strip-stat {
+      padding: 2rem 1rem; text-align:center;
+      border-right: 1px solid var(--border);
+      position: relative; overflow:hidden;
+      transition: background 0.3s;
+    }
+    .strip-stat:last-child { border-right:none; }
+    .strip-stat:hover { background: rgba(0,212,255,0.04); }
+    .strip-stat::before {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.03), transparent);
+      opacity:0; transition:opacity 0.3s;
+    }
+    .strip-stat:hover::before { opacity:1; }
+    .strip-num {
+      font-family: var(--fm); font-size: clamp(1.8rem,3vw,2.8rem);
+      font-weight:500; color:var(--accent); display:block;
+      line-height:1; margin-bottom:6px;
+      text-shadow: 0 0 20px rgba(0,212,255,0.4);
+    }
+    .strip-lbl { font-size:0.78rem; color:var(--text3); letter-spacing:0.06em; }
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 2px; }
 
@@ -401,6 +490,15 @@
 </head>
 <body>
 
+<!-- Custom Cursor -->
+<div id="cursor">
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+</div>
+
+<!-- Scroll Progress -->
+<div id="scrollProgress"><div id="scrollBar"></div></div>
+
 <!-- BG Particle Canvas -->
 <canvas id="bgCanvas"></canvas>
 
@@ -446,6 +544,13 @@
     <div class="photo-wrap" id="photoWrap">
       <canvas id="photoCanvas"></canvas>
       <div class="photo-frame" id="photoFrame">
+        <!--
+          ╔══════════════════════════════════════╗
+          ║  APNI PHOTO YAHAN LAGAO:             ║
+          ║  <img src="images/photo.jpg" ...>    ║
+          ║  ya placeholder rahne do             ║
+          ╚══════════════════════════════════════╝
+        -->
         <img src="images/myphoto.jpg" alt="Bhaskar Baluni">
       </div>
     </div>
@@ -454,7 +559,7 @@
     <div class="hero-right">
       <p class="hero-role-small g-hide" id="hRoleSmall">A Data</p>
       <div class="hero-role-big g-hide" id="hRoleBig">
-        <span class="line1">ANALYST</span>
+        <span class="line1" id="typewriterText">ANALYST</span><span class="tw-cursor"></span>
         <span class="line2">DEVELOPER</span>
       </div>
     </div>
@@ -474,6 +579,26 @@
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="strip-stat">
+      <span class="strip-num" data-target="4" data-suffix="+">0+</span>
+      <span class="strip-lbl">Projects Built</span>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-num" data-target="4" data-suffix="+">0+</span>
+      <span class="strip-lbl">Certifications</span>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-num" data-target="7043" data-suffix="">0</span>
+      <span class="strip-lbl">Data Rows Analyzed</span>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-num" data-target="90" data-suffix="%">0%</span>
+      <span class="strip-lbl">Python Proficiency</span>
+    </div>
   </div>
 
   <!-- PROJECTS -->
@@ -875,8 +1000,92 @@ window.addEventListener('scroll', ()=>{
 });
 
 // ════════════════════════════════
-// 9. MARQUEE BUILD
+// 10. CUSTOM CURSOR
 // ════════════════════════════════
+(function() {
+  const cursor = document.getElementById('cursor');
+  const dot    = cursor.querySelector('.cursor-dot');
+  const ring   = cursor.querySelector('.cursor-ring');
+  let mx=0, my=0, rx=0, ry=0;
+
+  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+
+  // Dot follows instantly, ring follows with lag
+  (function animCursor(){
+    rx += (mx-rx)*0.12;
+    ry += (my-ry)*0.12;
+    dot.style.left  = mx+'px';
+    dot.style.top   = my+'px';
+    ring.style.left = rx+'px';
+    ring.style.top  = ry+'px';
+    requestAnimationFrame(animCursor);
+  })();
+})();
+
+// ════════════════════════════════
+// 11. SCROLL PROGRESS BAR
+// ════════════════════════════════
+window.addEventListener('scroll', () => {
+  const docH = document.documentElement.scrollHeight - innerHeight;
+  const pct  = (scrollY / docH) * 100;
+  document.getElementById('scrollBar').style.width = pct + '%';
+});
+
+// ════════════════════════════════
+// 12. TYPEWRITER CYCLING ROLES
+// ════════════════════════════════
+(function typewriter() {
+  const el    = document.getElementById('typewriterText');
+  const roles = ['ANALYST', 'SCIENTIST', 'ENGINEER', 'STRATEGIST'];
+  let ri=0, ci=0, deleting=false;
+
+  function type() {
+    const word = roles[ri];
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) {
+        deleting = true;
+        setTimeout(type, 2000); return;
+      }
+      setTimeout(type, 110);
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) {
+        deleting = false;
+        ri = (ri+1) % roles.length;
+        setTimeout(type, 400); return;
+      }
+      setTimeout(type, 60);
+    }
+  }
+  // Start after hero animation
+  setTimeout(type, 2200);
+})();
+
+// ════════════════════════════════
+// 13. STATS STRIP COUNTER
+// ════════════════════════════════
+const stripObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.strip-num').forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const isLarge = target > 100;
+      const obj = { v:0 };
+      gsap.to(obj, {
+        v: target, duration: isLarge ? 2.5 : 1.5,
+        ease: 'power2.out',
+        onUpdate: () => {
+          el.textContent = (isLarge ? Math.round(obj.v).toLocaleString() : Math.round(obj.v)) + suffix;
+        }
+      });
+    });
+    stripObs.unobserve(e.target);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stats-strip').forEach(s => stripObs.observe(s));
+
 const skills = ['Python','Machine Learning','YOLOv8','NLP','Power BI','SQL','Pandas','Scikit-learn','OpenCV','TextBlob','Data Analytics','Bayesian Stats','Git / GitHub'];
 const track  = document.getElementById('marqueeTrack');
 track.innerHTML = [...skills,...skills,...skills,...skills].map(s=>`<span class="marquee-item">${s}</span>`).join('');
