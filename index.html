@@ -274,7 +274,6 @@
     .g-hide { opacity:0; }
     .g-up { opacity:0; transform:translateY(36px); }
 
-    /* ── LOADER ── */
     #loader {
       position:fixed; inset:0; z-index:99999;
       background:var(--bg);
@@ -291,7 +290,6 @@
     .loader-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--purple)); border-radius:1px; }
     .loader-text { font-family:var(--fm); font-size:.68rem; color:var(--text3); letter-spacing:.2em; text-transform:uppercase; }
 
-    /* ── CONTACT FORM ── */
     .contact-form {
       max-width:520px; margin:2rem auto 0; text-align:left;
       display:flex; flex-direction:column; gap:1rem;
@@ -420,7 +418,7 @@
 
   <div class="stats-strip">
     <div class="strip-stat">
-      <span class="strip-num" data-target="4" data-suffix="+">0+</span>
+      <span class="strip-num" data-target="5" data-suffix="+">0+</span>
       <span class="strip-lbl">Projects Built</span>
     </div>
     <div class="strip-stat">
@@ -428,7 +426,7 @@
       <span class="strip-lbl">Certifications</span>
     </div>
     <div class="strip-stat">
-      <span class="strip-num" data-target="7043" data-suffix="">0</span>
+      <span class="strip-num" data-target="101767" data-suffix="">0</span>
       <span class="strip-lbl">Data Rows Analyzed</span>
     </div>
     <div class="strip-stat">
@@ -444,6 +442,36 @@
       <span style="font-family:var(--fm);font-size:.68rem;color:var(--accent);border:1px solid rgba(0,212,255,0.35);padding:4px 12px;border-radius:2px;letter-spacing:.1em;">Latest Project</span>
     </div>
 
+    <!-- ── PATIENT READMISSION — NEW CARD ── -->
+    <div class="project-card g-up">
+      <div class="card-top">
+        <span class="card-icon">🏥</span>
+        <div style="display:flex;gap:.5rem;">
+          <a href="https://patientreadmissionprediction-pbzurimedjoycjik3xwrtz.streamlit.app" target="_blank" class="gh-link" style="color:var(--accent);border-color:rgba(0,212,255,0.4);">Live Demo ↗</a>
+          <a href="https://github.com/BHASKAR0111/Patient_Readmission_Prediction" target="_blank" class="gh-link">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="card-title">Patient Readmission Prediction</div>
+      <div class="card-desc">End-to-end ML pipeline predicting 30-day hospital readmission risk on 101,000+ patient records — enabling targeted discharge planning and proactive care interventions using Random Forest.</div>
+      <div class="stats-grid">
+        <div class="stat"><span class="stat-val" data-t="101766" data-d="0">101,766</span><span class="stat-lbl">Patient Records</span></div>
+        <div class="stat"><span class="stat-val" data-t="68" data-d="0">~0.68</span><span class="stat-lbl">ROC-AUC Score</span></div>
+        <div class="stat"><span class="stat-val" data-t="3" data-d="0">3</span><span class="stat-lbl">ML Models</span></div>
+        <div class="stat"><span class="stat-val" data-t="11" data-d="0">11%</span><span class="stat-lbl">Readmission Rate</span></div>
+      </div>
+      <ul class="bullets">
+        <li>Built full ML pipeline: EDA → Preprocessing → Logistic Regression, Random Forest, Gradient Boosting</li>
+        <li>Handled class imbalance (11% readmission rate) using SMOTE oversampling technique</li>
+        <li>Identified prior inpatient visits & hospital stay duration as top readmission predictors via feature importance</li>
+        <li>Deployed interactive Streamlit dashboard — instant risk score with Low / Moderate / High classification</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Streamlit</span>
+        <span class="tag">SMOTE</span><span class="tag">Random Forest</span><span class="tag">Healthcare ML</span>
+      </div>
+    </div>
+
+    <!-- ── CHURN ANALYSIS ── -->
     <div class="project-card g-up">
       <div class="card-top">
         <span class="card-icon">📡</span>
@@ -469,6 +497,7 @@
       <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Data Cleaning</span><span class="tag">Customer Analytics</span></div>
     </div>
 
+    <!-- ── RISE NOW ── -->
     <div class="project-card g-up">
       <div class="card-top"><span class="card-icon">🌐</span><a href="https://github.com/BHASKAR0111/Rise-Now" target="_blank" class="gh-link">GitHub ↗</a></div>
       <div class="card-title">RiseNow — Career Comeback Toolkit</div>
@@ -481,6 +510,7 @@
       <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Web Dev</span></div>
     </div>
 
+    <!-- ── YOLO ── -->
     <div class="project-card g-up">
       <div class="card-top"><span class="card-icon">🚗</span><a href="https://github.com/BHASKAR0111/Object-Speed_Detection_Using_YOLO" target="_blank" class="gh-link">GitHub ↗</a></div>
       <div class="card-title">Object & Speed Detection</div>
@@ -493,6 +523,7 @@
       <div class="tags"><span class="tag">YOLOv8</span><span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">Computer Vision</span></div>
     </div>
 
+    <!-- ── YOUTUBE SENTIMENT ── -->
     <div class="project-card g-up">
       <div class="card-top"><span class="card-icon">💬</span>
         <div style="display:flex;gap:.5rem;">
@@ -509,6 +540,7 @@
       </ul>
       <div class="tags"><span class="tag">Python</span><span class="tag">TextBlob</span><span class="tag">NLP</span><span class="tag">YouTube API</span></div>
     </div>
+
   </section>
 
   <section id="experience">
@@ -586,7 +618,6 @@
       <div class="sec-label g-up" style="justify-content:center">Let's Connect</div>
       <h2 class="contact-title g-up">Open to new <em>opportunities</em></h2>
       <p class="contact-sub g-up">Open to Data Analyst, ML, and Python Developer roles. Fill the form or reach out directly!</p>
-
       <form class="contact-form g-up" action="https://formspree.io/f/mpqygknk" method="POST" id="contactForm">
         <div class="form-row">
           <div class="form-group">
@@ -609,7 +640,6 @@
         <div class="form-success" id="formSuccess">✓ Message sent! I'll get back to you soon.</div>
         <button type="submit" class="form-submit">Send Message ✉</button>
       </form>
-
       <div class="social-links g-up">
         <a href="https://www.linkedin.com/in/bhaskarbaluni/" target="_blank" class="social-link">💼 LinkedIn</a>
         <a href="https://github.com/BHASKAR0111" target="_blank" class="social-link">🐙 GitHub</a>
@@ -626,229 +656,27 @@
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
-
-(function bgParticles() {
-  const canvas = document.getElementById('bgCanvas');
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:false });
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.setSize(innerWidth,innerHeight);
-  const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,0.1,100);
-  camera.position.z=4;
-  const N=1800, pos=new Float32Array(N*3), col=new Float32Array(N*3);
-  const ca=new THREE.Color('#00d4ff'), cb=new THREE.Color('#9b6dff'), cc=new THREE.Color('#00e5a0');
-  for(let i=0;i<N;i++){
-    pos[i*3]=(Math.random()-.5)*14; pos[i*3+1]=(Math.random()-.5)*14; pos[i*3+2]=(Math.random()-.5)*14;
-    const r=Math.random(), c=r<.5?ca:r<.8?cb:cc;
-    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
-  }
-  const geo=new THREE.BufferGeometry();
-  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-  geo.setAttribute('color',new THREE.BufferAttribute(col,3));
-  const pts=new THREE.Points(geo,new THREE.PointsMaterial({size:.016,vertexColors:true,transparent:true,opacity:.65,sizeAttenuation:true}));
-  scene.add(pts);
-  let mx=0,my=0,tx=0,ty=0;
-  window.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*.5; my=(e.clientY/innerHeight-.5)*.35;});
-  let scrollY=0;
-  window.addEventListener('scroll',()=>{scrollY=window.scrollY;});
-  window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight);});
-  const clk=new THREE.Clock();
-  (function tick(){
-    const t=clk.getElapsedTime();
-    pts.rotation.y=t*.025; pts.rotation.x=t*.012;
-    tx+=(mx-tx)*.04; ty+=(my-ty)*.04;
-    camera.position.x=tx; camera.position.y=-ty; camera.position.z=4+scrollY*.0025;
-    renderer.render(scene,camera); requestAnimationFrame(tick);
-  })();
-})();
-
-(function photoRing() {
-  const canvas=document.getElementById('photoCanvas');
-  const photoWrap=document.getElementById('photoWrap');
-  const W=photoWrap.offsetWidth+120, H=photoWrap.offsetHeight+120;
-  canvas.width=W; canvas.height=H;
-  canvas.style.width=W+'px'; canvas.style.height=H+'px';
-  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.setSize(W,H);
-  const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(50,W/H,0.1,100);
-  camera.position.z=3.5;
-  const torus=new THREE.Mesh(new THREE.TorusGeometry(1.1,.008,16,200),new THREE.MeshBasicMaterial({color:0x00d4ff,transparent:true,opacity:.6}));
-  scene.add(torus);
-  const torus2=new THREE.Mesh(new THREE.TorusGeometry(1.2,.004,16,200),new THREE.MeshBasicMaterial({color:0x9b6dff,transparent:true,opacity:.35}));
-  torus2.rotation.x=Math.PI/3; scene.add(torus2);
-  const oN=120, oPos=new Float32Array(oN*3), oCol=new Float32Array(oN*3);
-  for(let i=0;i<oN;i++){
-    const angle=(i/oN)*Math.PI*2, r=1.1+(Math.random()-.5)*.3;
-    oPos[i*3]=Math.cos(angle)*r; oPos[i*3+1]=Math.sin(angle)*r; oPos[i*3+2]=(Math.random()-.5)*.5;
-    const c=Math.random()<.6?new THREE.Color('#00d4ff'):new THREE.Color('#9b6dff');
-    oCol[i*3]=c.r; oCol[i*3+1]=c.g; oCol[i*3+2]=c.b;
-  }
-  const oGeo=new THREE.BufferGeometry();
-  oGeo.setAttribute('position',new THREE.BufferAttribute(oPos,3));
-  oGeo.setAttribute('color',new THREE.BufferAttribute(oCol,3));
-  const oPts=new THREE.Points(oGeo,new THREE.PointsMaterial({size:.045,vertexColors:true,transparent:true,opacity:.9,sizeAttenuation:true}));
-  scene.add(oPts);
-  scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.3,32,32),new THREE.MeshBasicMaterial({color:0x00d4ff,transparent:true,opacity:.03,side:THREE.BackSide})));
-  let mx=0,my=0;
-  window.addEventListener('mousemove',e=>{
-    const rect=document.getElementById('photoWrap').getBoundingClientRect();
-    mx=((e.clientX-rect.left)/rect.width-.5)*1.2;
-    my=((e.clientY-rect.top)/rect.height-.5)*1.2;
-  });
-  const clk=new THREE.Clock();
-  (function tick(){
-    const t=clk.getElapsedTime();
-    torus.rotation.z=t*.4; torus.rotation.x=mx*.3;
-    torus2.rotation.z=-t*.25; torus2.rotation.y=my*.3;
-    oPts.rotation.z=t*.15;
-    renderer.render(scene,camera); requestAnimationFrame(tick);
-  })();
-})();
-
-gsap.to('#photoFrame',{
-  scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.5},
-  scale:1.35,y:-30,ease:'none',
-});
-gsap.to('#photoCanvas',{
-  scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.5},
-  scale:1.2,opacity:0,ease:'none',
-});
-
+(function bgParticles(){const canvas=document.getElementById('bgCanvas');const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,0.1,100);camera.position.z=4;const N=1800,pos=new Float32Array(N*3),col=new Float32Array(N*3);const ca=new THREE.Color('#00d4ff'),cb=new THREE.Color('#9b6dff'),cc=new THREE.Color('#00e5a0');for(let i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*14;pos[i*3+1]=(Math.random()-.5)*14;pos[i*3+2]=(Math.random()-.5)*14;const r=Math.random(),c=r<.5?ca:r<.8?cb:cc;col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b;}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('color',new THREE.BufferAttribute(col,3));const pts=new THREE.Points(geo,new THREE.PointsMaterial({size:.016,vertexColors:true,transparent:true,opacity:.65,sizeAttenuation:true}));scene.add(pts);let mx=0,my=0,tx=0,ty=0;window.addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-.5)*.5;my=(e.clientY/innerHeight-.5)*.35;});let scrollY=0;window.addEventListener('scroll',()=>{scrollY=window.scrollY;});window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});const clk=new THREE.Clock();(function tick(){const t=clk.getElapsedTime();pts.rotation.y=t*.025;pts.rotation.x=t*.012;tx+=(mx-tx)*.04;ty+=(my-ty)*.04;camera.position.x=tx;camera.position.y=-ty;camera.position.z=4+scrollY*.0025;renderer.render(scene,camera);requestAnimationFrame(tick);})();})();
+(function photoRing(){const canvas=document.getElementById('photoCanvas');const photoWrap=document.getElementById('photoWrap');const W=photoWrap.offsetWidth+120,H=photoWrap.offsetHeight+120;canvas.width=W;canvas.height=H;canvas.style.width=W+'px';canvas.style.height=H+'px';const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(50,W/H,0.1,100);camera.position.z=3.5;const torus=new THREE.Mesh(new THREE.TorusGeometry(1.1,.008,16,200),new THREE.MeshBasicMaterial({color:0x00d4ff,transparent:true,opacity:.6}));scene.add(torus);const torus2=new THREE.Mesh(new THREE.TorusGeometry(1.2,.004,16,200),new THREE.MeshBasicMaterial({color:0x9b6dff,transparent:true,opacity:.35}));torus2.rotation.x=Math.PI/3;scene.add(torus2);const oN=120,oPos=new Float32Array(oN*3),oCol=new Float32Array(oN*3);for(let i=0;i<oN;i++){const angle=(i/oN)*Math.PI*2,r=1.1+(Math.random()-.5)*.3;oPos[i*3]=Math.cos(angle)*r;oPos[i*3+1]=Math.sin(angle)*r;oPos[i*3+2]=(Math.random()-.5)*.5;const c=Math.random()<.6?new THREE.Color('#00d4ff'):new THREE.Color('#9b6dff');oCol[i*3]=c.r;oCol[i*3+1]=c.g;oCol[i*3+2]=c.b;}const oGeo=new THREE.BufferGeometry();oGeo.setAttribute('position',new THREE.BufferAttribute(oPos,3));oGeo.setAttribute('color',new THREE.BufferAttribute(oCol,3));const oPts=new THREE.Points(oGeo,new THREE.PointsMaterial({size:.045,vertexColors:true,transparent:true,opacity:.9,sizeAttenuation:true}));scene.add(oPts);scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.3,32,32),new THREE.MeshBasicMaterial({color:0x00d4ff,transparent:true,opacity:.03,side:THREE.BackSide})));let mx=0,my=0;window.addEventListener('mousemove',e=>{const rect=document.getElementById('photoWrap').getBoundingClientRect();mx=((e.clientX-rect.left)/rect.width-.5)*1.2;my=((e.clientY-rect.top)/rect.height-.5)*1.2;});const clk=new THREE.Clock();(function tick(){const t=clk.getElapsedTime();torus.rotation.z=t*.4;torus.rotation.x=mx*.3;torus2.rotation.z=-t*.25;torus2.rotation.y=my*.3;oPts.rotation.z=t*.15;renderer.render(scene,camera);requestAnimationFrame(tick);})();})();
+gsap.to('#photoFrame',{scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.5},scale:1.35,y:-30,ease:'none'});
+gsap.to('#photoCanvas',{scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.5},scale:1.2,opacity:0,ease:'none'});
 const heroTL=gsap.timeline({defaults:{ease:'power3.out'}});
 gsap.set(['#hGreet','#hName','#hRoleSmall','#hRoleBig'],{y:40});
-heroTL
-  .to('#hGreet',    {opacity:1,y:0,duration:.7,delay:.4})
-  .to('#hName',     {opacity:1,y:0,duration:.9},'-=.3')
-  .to('#hRoleSmall',{opacity:1,y:0,duration:.7},'-=.6')
-  .to('#hRoleBig',  {opacity:1,y:0,duration:.8},'-=.5');
-
-document.querySelectorAll('.g-up').forEach((el,i)=>{
-  gsap.to(el,{
-    scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
-    opacity:1,y:0,duration:.75,delay:(i%4)*.08,ease:'power2.out',
-  });
-});
-
-document.querySelectorAll('.sk-fill').forEach(bar=>{
-  gsap.to(bar,{
-    scrollTrigger:{trigger:bar,start:'top 92%'},
-    width:bar.style.getPropertyValue('--w'),duration:1.4,ease:'power2.out',delay:.1,
-  });
-});
-
-const cObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('.stat-val').forEach(el=>{
-      const target=parseFloat(el.dataset.t), dec=parseInt(el.dataset.d||0);
-      const suffix=target<100?'%':'';
-      const obj={v:0};
-      gsap.to(obj,{v:target,duration:1.8,ease:'power2.out',
-        onUpdate:()=>el.textContent=(dec?obj.v.toFixed(dec):Math.round(obj.v).toLocaleString())+suffix});
-    });
-    cObs.unobserve(e.target);
-  });
-},{threshold:.4});
+heroTL.to('#hGreet',{opacity:1,y:0,duration:.7,delay:.4}).to('#hName',{opacity:1,y:0,duration:.9},'-=.3').to('#hRoleSmall',{opacity:1,y:0,duration:.7},'-=.6').to('#hRoleBig',{opacity:1,y:0,duration:.8},'-=.5');
+document.querySelectorAll('.g-up').forEach((el,i)=>{gsap.to(el,{scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},opacity:1,y:0,duration:.75,delay:(i%4)*.08,ease:'power2.out'});});
+document.querySelectorAll('.sk-fill').forEach(bar=>{gsap.to(bar,{scrollTrigger:{trigger:bar,start:'top 92%'},width:bar.style.getPropertyValue('--w'),duration:1.4,ease:'power2.out',delay:.1});});
+const cObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.stat-val').forEach(el=>{const target=parseFloat(el.dataset.t),dec=parseInt(el.dataset.d||0);const suffix=target<100?'%':'';const obj={v:0};gsap.to(obj,{v:target,duration:1.8,ease:'power2.out',onUpdate:()=>el.textContent=(dec?obj.v.toFixed(dec):Math.round(obj.v).toLocaleString())+suffix});});cObs.unobserve(e.target);});},{threshold:.4});
 document.querySelectorAll('.stats-grid').forEach(g=>cObs.observe(g));
-
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
-  const docH=document.documentElement.scrollHeight-innerHeight;
-  document.getElementById('scrollBar').style.width=(window.scrollY/docH*100)+'%';
-});
-
-const skills=['Python','Machine Learning','YOLOv8','NLP','Power BI','SQL','Pandas','Scikit-learn','OpenCV','TextBlob','Data Analytics','Bayesian Stats','Git / GitHub'];
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('solid',window.scrollY>60);const docH=document.documentElement.scrollHeight-innerHeight;document.getElementById('scrollBar').style.width=(window.scrollY/docH*100)+'%';});
+const skills=['Python','Machine Learning','YOLOv8','NLP','Power BI','SQL','Pandas','Scikit-learn','OpenCV','TextBlob','Data Analytics','Bayesian Stats','Git / GitHub','Random Forest','Streamlit'];
 const track=document.getElementById('marqueeTrack');
 track.innerHTML=[...skills,...skills,...skills,...skills].map(s=>`<span class="marquee-item">${s}</span>`).join('');
-
-(function cursor(){
-  const el=document.getElementById('cursor');
-  const dot=el.querySelector('.cursor-dot'), ring=el.querySelector('.cursor-ring');
-  let mx=0,my=0,rx=0,ry=0;
-  window.addEventListener('mousemove',e=>{mx=e.clientX; my=e.clientY;});
-  (function anim(){
-    rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-    dot.style.left=mx+'px'; dot.style.top=my+'px';
-    ring.style.left=rx+'px'; ring.style.top=ry+'px';
-    requestAnimationFrame(anim);
-  })();
-})();
-
-(function typewriter(){
-  const el=document.getElementById('typewriterText');
-  const roles=['ANALYST','SCIENTIST','ENGINEER','STRATEGIST'];
-  let ri=0,ci=0,deleting=false;
-  function type(){
-    const word=roles[ri];
-    if(!deleting){
-      el.textContent=word.slice(0,++ci);
-      if(ci===word.length){deleting=true; setTimeout(type,2000); return;}
-      setTimeout(type,110);
-    } else {
-      el.textContent=word.slice(0,--ci);
-      if(ci===0){deleting=false; ri=(ri+1)%roles.length; setTimeout(type,400); return;}
-      setTimeout(type,60);
-    }
-  }
-  setTimeout(type,2200);
-})();
-
-const stripObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('.strip-num').forEach(el=>{
-      const target=parseFloat(el.dataset.target), suffix=el.dataset.suffix||'';
-      const isLarge=target>100, obj={v:0};
-      gsap.to(obj,{v:target,duration:isLarge?2.5:1.5,ease:'power2.out',
-        onUpdate:()=>el.textContent=(isLarge?Math.round(obj.v).toLocaleString():Math.round(obj.v))+suffix});
-    });
-    stripObs.unobserve(e.target);
-  });
-},{threshold:.5});
+(function cursor(){const el=document.getElementById('cursor');const dot=el.querySelector('.cursor-dot'),ring=el.querySelector('.cursor-ring');let mx=0,my=0,rx=0,ry=0;window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();})();
+(function typewriter(){const el=document.getElementById('typewriterText');const roles=['ANALYST','SCIENTIST','ENGINEER','STRATEGIST'];let ri=0,ci=0,deleting=false;function type(){const word=roles[ri];if(!deleting){el.textContent=word.slice(0,++ci);if(ci===word.length){deleting=true;setTimeout(type,2000);return;}setTimeout(type,110);}else{el.textContent=word.slice(0,--ci);if(ci===0){deleting=false;ri=(ri+1)%roles.length;setTimeout(type,400);return;}setTimeout(type,60);}}setTimeout(type,2200);})();
+const stripObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.strip-num').forEach(el=>{const target=parseFloat(el.dataset.target),suffix=el.dataset.suffix||'';const isLarge=target>100,obj={v:0};gsap.to(obj,{v:target,duration:isLarge?2.5:1.5,ease:'power2.out',onUpdate:()=>el.textContent=(isLarge?Math.round(obj.v).toLocaleString():Math.round(obj.v))+suffix});});stripObs.unobserve(e.target);});},{threshold:.5});
 document.querySelectorAll('.stats-strip').forEach(s=>stripObs.observe(s));
-
-(function loader(){
-  const bar=document.getElementById('loaderBar');
-  const txt=document.getElementById('loaderText');
-  const steps=[
-    {p:20, t:'Loading assets...'},
-    {p:45, t:'Rendering 3D scene...'},
-    {p:70, t:'Preparing portfolio...'},
-    {p:90, t:'Almost there...'},
-    {p:100,t:'Welcome!'},
-  ];
-  let i=0;
-  function step(){
-    if(i>=steps.length){
-      setTimeout(()=>{
-        gsap.to('#loader',{opacity:0,duration:.6,ease:'power2.in',onComplete:()=>{
-          document.getElementById('loader').style.display='none';
-        }});
-      },300);
-      return;
-    }
-    const s=steps[i++];
-    gsap.to(bar,{width:s.p+'%',duration:.5,ease:'power2.out'});
-    txt.textContent=s.t;
-    setTimeout(step, i===steps.length?400:500);
-  }
-  setTimeout(step,200);
-})();
-
-document.getElementById('contactForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const btn=this.querySelector('.form-submit');
-  const success=document.getElementById('formSuccess');
-  btn.textContent='Sending...'; btn.disabled=true;
-  try {
-    const res = await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
-    if(res.ok){
-      success.style.display='block';
-      this.reset();
-      btn.textContent='Sent! ✓';
-    } else { btn.textContent='Error — try again'; btn.disabled=false; }
-  } catch { btn.textContent='Error — try again'; btn.disabled=false; }
-});
+(function loader(){const bar=document.getElementById('loaderBar');const txt=document.getElementById('loaderText');const steps=[{p:20,t:'Loading assets...'},{p:45,t:'Rendering 3D scene...'},{p:70,t:'Preparing portfolio...'},{p:90,t:'Almost there...'},{p:100,t:'Welcome!'}];let i=0;function step(){if(i>=steps.length){setTimeout(()=>{gsap.to('#loader',{opacity:0,duration:.6,ease:'power2.in',onComplete:()=>{document.getElementById('loader').style.display='none';}});},300);return;}const s=steps[i++];gsap.to(bar,{width:s.p+'%',duration:.5,ease:'power2.out'});txt.textContent=s.t;setTimeout(step,i===steps.length?400:500);}setTimeout(step,200);})();
+document.getElementById('contactForm').addEventListener('submit',async function(e){e.preventDefault();const btn=this.querySelector('.form-submit');const success=document.getElementById('formSuccess');btn.textContent='Sending...';btn.disabled=true;try{const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});if(res.ok){success.style.display='block';this.reset();btn.textContent='Sent! ✓';}else{btn.textContent='Error — try again';btn.disabled=false;}}catch{btn.textContent='Error — try again';btn.disabled=false;}});
 </script>
 </body>
 </html>
