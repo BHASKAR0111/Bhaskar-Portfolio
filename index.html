@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ─── RESET & VARIABLES ─────────────────────────────── */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --bg:      #080809;
@@ -28,15 +28,15 @@
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--white); font-family: "DM Mono", monospace; overflow-x: hidden; cursor: none; }
 
-/* ─── CURSOR ─────────────────────────────────────────── */
+
 #cursor      { position:fixed; width:10px; height:10px; background:var(--silver2); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .18s,height .18s; mix-blend-mode:difference; }
 #cursor-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(200,201,204,.3); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform .16s ease-out; }
 
-/* ─── BG LAYERS ─────────────────────────────────────── */
+
 .bg-grid     { position:fixed; inset:0; background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px); background-size:64px 64px; pointer-events:none; z-index:0; }
 .bg-vignette { position:fixed; inset:0; background:radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,.9) 100%); pointer-events:none; z-index:0; }
 
-/* ─── NAV ────────────────────────────────────────────── */
+
 nav {
   position: fixed; top:0; left:0; right:0;
   padding: 22px 52px;
@@ -51,10 +51,9 @@ nav {
 .nav-links a { font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); text-decoration:none; transition:color .2s; }
 .nav-links a:hover { color:var(--silver2); }
 
-/* ─── SECTION WRAPPER ────────────────────────────────── */
+
 section { position:relative; z-index:2; }
 
-/* ─── HERO ───────────────────────────────────────────── */
 #hero {
   min-height: 100vh;
   display: grid;
@@ -84,12 +83,12 @@ section { position:relative; z-index:2; }
 .stat-num { font-family:"Syne",sans-serif; font-size:1.7rem; font-weight:700; color:var(--silver2); line-height:1; }
 .stat-label { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); margin-top:4px; }
 
-/* Hero text entrance */
+
 .hero-text > * { opacity:0; transform:translateY(18px); animation:fadeUp .65s ease forwards; }
 .hero-text > *:nth-child(1){animation-delay:.15s}.hero-text > *:nth-child(2){animation-delay:.28s}.hero-text > *:nth-child(3){animation-delay:.38s}.hero-text > *:nth-child(4){animation-delay:.48s}.hero-text > *:nth-child(5){animation-delay:.58s}.hero-text > *:nth-child(6){animation-delay:.66s}.hero-text > *:nth-child(7){animation-delay:.74s}
 @keyframes fadeUp { to{opacity:1;transform:translateY(0)} }
 
-/* ─── 3D PORTRAIT ────────────────────────────────────── */
+
 .portrait-wrapper { display:flex; justify-content:center; align-items:center; position:relative; opacity:0; animation:fadeIn 1.1s ease .35s forwards; }
 @keyframes fadeIn { to{opacity:1} }
 .scene { perspective:1000px; width:400px; height:500px; }
@@ -115,7 +114,7 @@ section { position:relative; z-index:2; }
 .scroll-line { width:1px; height:34px; background:linear-gradient(to bottom,var(--silver),transparent); animation:sl 2.2s ease-in-out infinite; }
 @keyframes sl { 0%,100%{opacity:.2} 50%{opacity:.7} }
 
-/* ─── MOBILE PHOTO (shown only on mobile) ────────────── */
+
 .mobile-photo-wrapper {
   display: none;
   justify-content: center;
@@ -133,14 +132,14 @@ section { position:relative; z-index:2; }
   display: block;
 }
 
-/* ─── SECTION TITLES ─────────────────────────────────── */
+
 .section-label { font-size:.6rem; letter-spacing:.32em; text-transform:uppercase; color:var(--dim); display:flex; align-items:center; gap:10px; margin-bottom:40px; }
 .section-label::before { content:""; width:24px; height:1px; background:var(--dim); }
 .section-label span { color:var(--accent); margin-right:6px; }
 h2.section-title { font-family:"Syne",sans-serif; font-weight:800; font-size:clamp(2rem,4vw,3rem); letter-spacing:-.02em; color:var(--white); margin-bottom:48px; }
 h2.section-title em { color:var(--silver); font-style:italic; }
 
-/* ─── PROJECTS ───────────────────────────────────────── */
+
 #projects { padding: 100px 80px; }
 .projects-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
 .project-card {
@@ -172,7 +171,6 @@ h2.section-title em { color:var(--silver); font-style:italic; }
 .tech-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
 .tech-tag { font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; color:var(--dim); border:1px solid var(--dimmer); padding:3px 9px; }
 
-/* ─── EXPERIENCE ─────────────────────────────────────── */
 #experience { padding:100px 80px; border-top:1px solid var(--border); }
 .exp-item { display:grid; grid-template-columns:180px 1fr; gap:40px; padding:40px 0; border-bottom:1px solid var(--border); }
 .exp-meta { }
@@ -184,7 +182,6 @@ h2.section-title em { color:var(--silver); font-style:italic; }
 .exp-bullets li { font-size:.72rem; line-height:1.7; color:rgba(244,244,245,.38); padding-left:14px; position:relative; margin-bottom:4px; }
 .exp-bullets li::before { content:"—"; position:absolute; left:0; color:var(--dimmer); }
 
-/* ─── CERTIFICATIONS ─────────────────────────────────── */
 #certifications { padding:100px 80px; border-top:1px solid var(--border); }
 .certs-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; }
 .cert-card { background:var(--bg2); border:1px solid var(--border); padding:28px 32px; display:flex; align-items:flex-start; gap:20px; transition:border-color .25s,background .25s; text-decoration:none; }
@@ -195,7 +192,7 @@ h2.section-title em { color:var(--silver); font-style:italic; }
 .cert-name { font-family:"Syne",sans-serif; font-weight:700; font-size:.9rem; color:var(--white); margin-bottom:4px; }
 .cert-date { font-size:.62rem; color:var(--accent); }
 
-/* ─── SKILLS ─────────────────────────────────────────── */
+
 #skills { padding:100px 80px; border-top:1px solid var(--border); }
 .skills-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:48px; }
 .skill-group h4 { font-family:"Syne",sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:24px; }
@@ -207,7 +204,7 @@ h2.section-title em { color:var(--silver); font-style:italic; }
 .skill-fill { position:absolute; top:0; left:0; height:100%; background:linear-gradient(to right,var(--dim),var(--silver)); animation:fillBar 1.2s ease forwards; transform-origin:left; transform:scaleX(0); }
 @keyframes fillBar { to{transform:scaleX(1)} }
 
-/* ─── CONTACT ────────────────────────────────────────── */
+
 #contact { padding:100px 80px; border-top:1px solid var(--border); }
 .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
 .contact-intro p { font-size:.8rem; line-height:1.9; color:rgba(244,244,245,.42); margin-bottom:32px; }
@@ -225,19 +222,19 @@ h2.section-title em { color:var(--silver); font-style:italic; }
 .form-success { display:none; font-size:.72rem; color:var(--silver); letter-spacing:.1em; padding:12px 0; }
 .form-success.show { display:block; }
 
-/* ─── FOOTER ─────────────────────────────────────────── */
+
 footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; z-index:2; position:relative; }
 .footer-copy { font-size:.6rem; letter-spacing:.15em; color:var(--dimmer); }
 .footer-built { font-size:.6rem; letter-spacing:.12em; color:var(--dimmer); }
 
-/* ─── SCROLLBAR ──────────────────────────────────────── */
+
 ::-webkit-scrollbar { width:3px; }
 ::-webkit-scrollbar-track { background:var(--bg); }
 ::-webkit-scrollbar-thumb { background:var(--dimmer); border-radius:2px; }
 
-/* ─── RESPONSIVE ─────────────────────────────────────── */
+
 @media(max-width:900px){
-  /* Photo: desktop wala hide, mobile wala show */
+ 
   .portrait-wrapper { display:none !important; }
   .mobile-photo-wrapper { display:flex; }
 
@@ -267,7 +264,6 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
 <div class="bg-grid"></div>
 <div class="bg-vignette"></div>
 
-<!-- ─── NAV ──────────────────────────────────────── -->
 <nav>
   <a class="logo" href="#hero">BB</a>
   <ul class="nav-links">
@@ -279,12 +275,12 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   </ul>
 </nav>
 
-<!-- ─── HERO ──────────────────────────────────────── -->
+
 <section id="hero">
   <div class="hero-text">
     <div class="tag">Available for opportunities</div>
 
-    <!-- ✅ FIX 1: Mobile photo — sirf mobile pe dikhega -->
+    
     <div class="mobile-photo-wrapper">
       <img src="images/myphoto.jpg" alt="Bhaskar Baluni">
     </div>
@@ -308,7 +304,7 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
     </div>
   </div>
 
-  <!-- Desktop 3D portrait -->
+
   <div class="portrait-wrapper" id="portraitWrapper">
     <div class="scene" id="scene">
       <div class="portrait-card" id="portraitCard">
@@ -327,7 +323,7 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   <div class="scroll-hint"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- ─── PROJECTS ───────────────────────────────────── -->
+
 <section id="projects">
   <div class="section-label"><span>01</span>Projects</div>
   <h2 class="section-title">Featured <em>Work</em></h2>
@@ -429,7 +425,6 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   </div>
 </section>
 
-<!-- ─── EXPERIENCE ─────────────────────────────────── -->
 <section id="experience">
   <div class="section-label"><span>02</span>Experience</div>
   <h2 class="section-title">Work <em>History</em></h2>
@@ -451,7 +446,7 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   </div>
 </section>
 
-<!-- ─── CERTIFICATIONS ────────────────────────────── -->
+
 <section id="certifications">
   <div class="section-label"><span>03</span>Certifications</div>
   <h2 class="section-title">Credentials</h2>
@@ -491,7 +486,7 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   </div>
 </section>
 
-<!-- ─── SKILLS ────────────────────────────────────── -->
+
 <section id="skills">
   <div class="section-label"><span>04</span>Skills</div>
   <h2 class="section-title">Tech <em>Stack</em></h2>
@@ -526,7 +521,7 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   </div>
 </section>
 
-<!-- ─── CONTACT ───────────────────────────────────── -->
+
 <section id="contact">
   <div class="section-label"><span>05</span>Contact</div>
   <h2 class="section-title">Open to new <em>opportunities</em></h2>
@@ -542,7 +537,6 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
       </div>
     </div>
 
-    <!-- ✅ FIX 2: Contact form — Formspree se actual email aayega -->
     <div class="contact-form">
       <div class="form-field">
         <label for="name">Name</label>
@@ -566,14 +560,14 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   </div>
 </section>
 
-<!-- ─── FOOTER ────────────────────────────────────── -->
+
 <footer>
   <div class="footer-copy">© 2025 Bhaskar Baluni</div>
   <div class="footer-built">Built with HTML · CSS · Ambition</div>
 </footer>
 
 <script>
-/* ─── CURSOR ───── */
+
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursor-ring');
 document.addEventListener('mousemove', e => {
@@ -585,7 +579,7 @@ document.addEventListener('mousemove', e => {
   }, 80);
 });
 
-/* ─── TYPED ROLE ───── */
+
 const roles = ['Data Analyst','ML Engineer','Python Developer','BI Developer'];
 let ri = 0, ci = 0, deleting = false;
 const el = document.getElementById('typed-role');
@@ -598,7 +592,7 @@ function type() {
 }
 type();
 
-/* ─── COUNTER ───── */
+
 const counters = document.querySelectorAll('.stat-num[data-count]');
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -616,7 +610,7 @@ const obs = new IntersectionObserver(entries => {
 });
 counters.forEach(c => obs.observe(c));
 
-/* ─── 3D TILT ───── */
+
 const card = document.getElementById('portraitCard');
 const scene = document.getElementById('scene');
 if (scene) {
@@ -635,7 +629,7 @@ if (scene) {
   });
 }
 
-/* ─── FLOATING DOTS ───── */
+
 const pw = document.getElementById('portraitWrapper');
 if (pw) {
   for (let i = 0; i < 10; i++) {
@@ -647,7 +641,7 @@ if (pw) {
   }
 }
 
-/* ─── CONTACT FORM (Formspree) ───── */
+
 async function sendMessage() {
   const name    = document.getElementById('name').value.trim();
   const email   = document.getElementById('email').value.trim();
@@ -664,9 +658,7 @@ async function sendMessage() {
   btn.disabled = true;
 
   try {
-    // ⚠️ IMPORTANT: Formspree pe jaao → formspree.io → free account banao
-    // → New Form create karo → apna endpoint neeche replace karo
-    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    const res = await fetch('https://formspree.io/f/mpqygknk', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ name, email, subject, message })
