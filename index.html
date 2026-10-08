@@ -166,6 +166,156 @@ h2.section-title em { color:var(--silver); font-style:italic; }
 .resume-inner { display:flex; flex-direction:column; align-items:center; gap:20px; }
 .resume-inner p { font-size:.75rem; line-height:1.9; color:rgba(244,244,245,.38); max-width:460px; }
 
+/* ── RISEL SHOWCASE ── */
+.risel-showcase {
+  margin-bottom: 2px;
+  background: linear-gradient(135deg, rgba(16,17,20,0.98) 0%, rgba(12,13,15,0.98) 100%);
+  border: 1px solid rgba(200,201,204,.22);
+  padding: 52px 52px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.risel-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,201,204,.35), transparent);
+}
+.risel-featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .58rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--silver);
+  border: 1px solid rgba(200,201,204,.25);
+  padding: 6px 16px;
+  margin-bottom: 32px;
+  background: rgba(200,201,204,.04);
+}
+.risel-featured-badge::before { content: "✦"; color: var(--silver); font-size: .55rem; }
+.risel-header-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 36px;
+}
+.risel-showcase h3 {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  color: var(--white);
+  letter-spacing: -.025em;
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+.risel-subtitle { font-size: .72rem; color: var(--silver); letter-spacing: .12em; margin-bottom: 18px; }
+.risel-desc { font-size: .75rem; line-height: 1.95; color: rgba(244,244,245,.44); max-width: 640px; margin-bottom: 22px; }
+.risel-modules-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px; }
+.risel-module-pill { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(200,201,204,.48); border: 1px solid rgba(200,201,204,.1); padding: 4px 11px; }
+.risel-cta-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--silver);
+  color: #080809;
+  font-family: "DM Mono", monospace;
+  font-size: .67rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .25s, transform .25s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+.risel-cta-btn:hover { background: var(--silver2); transform: translateY(-2px); }
+.risel-hero-shot {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(200,201,204,.14);
+  box-shadow: 0 24px 70px rgba(0,0,0,.65), 0 4px 16px rgba(0,0,0,.4);
+  cursor: zoom-in;
+  margin-bottom: 12px;
+}
+.risel-hero-shot img { width: 100%; display: block; transition: transform .5s cubic-bezier(0.25,1,0.5,1); }
+.risel-hero-shot:hover img { transform: scale(1.015); }
+.risel-hero-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(8,8,9,.85));
+  padding: 28px 20px 14px;
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(200,201,204,.7);
+  pointer-events: none;
+}
+.risel-shots-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.risel-shot-item {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(200,201,204,.1);
+  box-shadow: 0 8px 28px rgba(0,0,0,.45);
+  cursor: zoom-in;
+  transition: transform .35s cubic-bezier(0.25,1,0.5,1), border-color .35s, box-shadow .35s;
+}
+.risel-shot-item:hover { transform: translateY(-4px); border-color: rgba(200,201,204,.28); box-shadow: 0 18px 45px rgba(0,0,0,.55); }
+.risel-shot-item img { width: 100%; display: block; }
+.risel-shot-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(8,8,9,.9));
+  padding: 24px 14px 10px;
+  font-size: .57rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(200,201,204,.72);
+  pointer-events: none;
+}
+.risel-stack-row { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(200,201,204,.08); }
+.risel-stack-label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
+.secondary-projects-label {
+  font-family: "Syne", sans-serif;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 48px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.secondary-projects-label::after { content: ""; flex: 1; height: 1px; background: var(--dimmer); }
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(4,4,5,.95);
+  z-index: 8000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .28s ease;
+  padding: 20px;
+  cursor: zoom-out;
+}
+#lightbox.lb-open { opacity: 1; pointer-events: all; }
+.lb-inner { position: relative; max-width: 1040px; width: 100%; }
+#lb-img { width: 100%; display: block; border-radius: 4px; border: 1px solid rgba(200,201,204,.15); box-shadow: 0 30px 80px rgba(0,0,0,.7); }
+#lb-caption { text-align: center; font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); margin-top: 16px; }
+.lb-close { position: absolute; top: -44px; right: 0; background: none; border: none; color: var(--silver); font-size: 1.8rem; cursor: pointer; line-height: 1; padding: 4px 8px; transition: color .2s; }
+.lb-close:hover { color: var(--white); }
+
 /* ── CONTACT ── */
 #contact { padding:100px 80px; border-top:1px solid var(--border); }
 .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
@@ -211,6 +361,10 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   .contact-grid { gap:40px; }
   .resume-inner { padding:0; }
   h2.section-title { margin-bottom:32px; }
+  .risel-showcase { padding:32px 24px; }
+  .risel-header-row { grid-template-columns:1fr; gap:20px; }
+  .risel-shots-grid { grid-template-columns:1fr; }
+  #lightbox { padding:12px; }
 }
 
 @media(max-width:600px){
@@ -493,36 +647,78 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
 <section id="projects">
   <div class="section-label"><span>04</span>Projects</div>
   <h2 class="section-title">Featured <em>Work</em></h2>
-  <div class="projects-grid">
 
-    <!-- Risel — Featured -->
-    <div class="project-card featured">
-      <div class="project-icon">🚀</div>
-      <div class="project-tag">Flagship Project · AI-Driven Career Platform</div>
-      <h3>Risel — AI-Driven Career &amp; Automation Platform</h3>
-      <p>Built and continuously developing Risel, a career platform that integrates LLM APIs, automation workflows, REST/serverless APIs, and Firebase/Firestore to deliver resume building, ATS scanning, cover-letter generation, AI career coaching, job tracking, career exploration, and the RACE autonomous career workflow engine.</p>
-      <ul class="project-bullets">
-        <li>Resume Builder, ATS Scanner, Cover Letter Generator, AI Career Coach, Interview Coach</li>
-        <li>Job Tracker, Career Explorer, Career Roadmaps, Learning &amp; Competency Assessment</li>
-        <li>RACE — staged workflow for job discovery, matching, preparation, validation, and submission</li>
-        <li>Truth-grounded validation layer checking AI output against verified candidate data</li>
-        <li>Firebase Authentication + Firestore for persistent user and application data</li>
-        <li>Serverless API deployment through Vercel</li>
-      </ul>
-      <div class="project-links">
-        <a href="https://risel.online/" class="proj-link primary" target="_blank">View Project ↗</a>
+  <!-- ── RISEL SHOWCASE ── -->
+  <div class="risel-showcase">
+    <div class="risel-featured-badge">Featured Project</div>
+
+    <div class="risel-header-row">
+      <div>
+        <h3>Risel — AI-Driven Career &amp; Automation Platform</h3>
+        <div class="risel-subtitle">risel.online</div>
+        <p class="risel-desc">Built and continuously developing Risel — a career platform that combines LLM APIs, automation workflows, REST/serverless APIs, and Firebase/Firestore to deliver AI-powered career tools across resume building, job tracking, coaching, roadmaps, and an autonomous career workflow engine.</p>
+        <div class="risel-modules-row">
+          <span class="risel-module-pill">Resume Builder</span>
+          <span class="risel-module-pill">ATS Scanner</span>
+          <span class="risel-module-pill">Cover Letter Generator</span>
+          <span class="risel-module-pill">AI Career Coach</span>
+          <span class="risel-module-pill">Interview Coach</span>
+          <span class="risel-module-pill">Job Tracker</span>
+          <span class="risel-module-pill">Career Explorer</span>
+          <span class="risel-module-pill">Career Roadmaps</span>
+          <span class="risel-module-pill">Assessments</span>
+          <span class="risel-module-pill">RACE Engine</span>
+        </div>
       </div>
+      <a href="https://risel.online/" class="risel-cta-btn" target="_blank">Visit Risel ↗</a>
+    </div>
+
+    <!-- Hero screenshot -->
+    <div class="risel-hero-shot" onclick="openLightbox('images/risel/risel-homepage.png','Risel — Homepage')">
+      <img src="images/risel/risel-homepage.png" alt="Risel Homepage — AI-Driven Career Platform" loading="lazy">
+      <div class="risel-hero-caption">Risel — Homepage</div>
+    </div>
+
+    <!-- Module screenshots grid -->
+    <div class="risel-shots-grid">
+      <div class="risel-shot-item" onclick="openLightbox('images/risel/risel-ats-scanner.png','ATS Resume Scanner')">
+        <img src="images/risel/risel-ats-scanner.png" alt="Risel ATS Resume Scanner" loading="lazy">
+        <div class="risel-shot-caption">ATS Resume Scanner</div>
+      </div>
+      <div class="risel-shot-item" onclick="openLightbox('images/risel/risel-ats-builder.png','ATS Resume Builder')">
+        <img src="images/risel/risel-ats-builder.png" alt="Risel ATS Resume Builder" loading="lazy">
+        <div class="risel-shot-caption">ATS Resume Builder</div>
+      </div>
+      <div class="risel-shot-item" onclick="openLightbox('images/risel/risel-career-roadmap.png','Career Roadmap')">
+        <img src="images/risel/risel-career-roadmap.png" alt="Risel Career Roadmap" loading="lazy">
+        <div class="risel-shot-caption">Career Roadmap</div>
+      </div>
+      <div class="risel-shot-item" onclick="openLightbox('images/risel/risel-resources.png','Resource Library')">
+        <img src="images/risel/risel-resources.png" alt="Risel Resource Library" loading="lazy">
+        <div class="risel-shot-caption">Resource Library</div>
+      </div>
+    </div>
+
+    <!-- Stack -->
+    <div class="risel-stack-row">
+      <div class="risel-stack-label">Stack</div>
       <div class="tech-tags">
         <span class="tech-tag">Python</span>
         <span class="tech-tag">JavaScript</span>
         <span class="tech-tag">LLM APIs</span>
         <span class="tech-tag">REST APIs</span>
-        <span class="tech-tag">Firebase</span>
+        <span class="tech-tag">Serverless</span>
+        <span class="tech-tag">Firebase Auth</span>
         <span class="tech-tag">Firestore</span>
         <span class="tech-tag">Vercel</span>
         <span class="tech-tag">Git / GitHub</span>
       </div>
     </div>
+  </div>
+
+  <!-- ── OTHER PROJECTS ── -->
+  <div class="secondary-projects-label">Other Projects</div>
+  <div class="projects-grid">
 
     <!-- YouTube Sentiment Analysis -->
     <div class="project-card">
@@ -596,6 +792,7 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
 
   </div>
 </section>
+
 
 <!-- ═══════════════════════ CERTIFICATIONS ═══════════════════════ -->
 <section id="certifications">
@@ -747,6 +944,28 @@ async function sendForm(){
   }
   btn.textContent='Send Message ✉';btn.disabled=false;
 }
+/* ── Lightbox ── */
+function openLightbox(src, caption) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-caption').textContent = caption;
+  document.getElementById('lightbox').classList.add('lb-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.body.style.overflow = '';
+  setTimeout(() => { document.getElementById('lb-img').src = ''; }, 300);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <div class="lb-inner" onclick="event.stopPropagation()">
+    <button class="lb-close" onclick="closeLightbox()" aria-label="Close">×</button>
+    <img id="lb-img" src="" alt="">
+    <div id="lb-caption"></div>
+  </div>
+</div>
+
 </body>
 </html>
