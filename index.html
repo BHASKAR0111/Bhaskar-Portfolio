@@ -20,8 +20,8 @@
 html { scroll-behavior: smooth; }
 body { background:var(--bg); color:var(--white); font-family:"DM Mono",monospace; overflow-x:hidden; cursor:none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 
-#cursor { position:fixed; top:0; left:0; width:10px; height:10px; background:var(--silver2); border-radius:50%; pointer-events:none; z-index:9999; will-change:transform; mix-blend-mode:difference; }
-#cursor-ring { position:fixed; top:0; left:0; width:32px; height:32px; border:1px solid rgba(200,201,204,.5); border-radius:50%; pointer-events:none; z-index:9998; will-change:transform; }
+#cursor { position:fixed; width:10px; height:10px; background:var(--silver2); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .2s cubic-bezier(0.25, 1, 0.5, 1), height .2s cubic-bezier(0.25, 1, 0.5, 1); mix-blend-mode:difference; }
+#cursor-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(200,201,204,.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); will-change: transform; transition: width .3s, height .3s; }
 
 .bg-grid { position:fixed; inset:0; background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px); background-size:64px 64px; pointer-events:none; z-index:0; }
 .bg-vignette { position:fixed; inset:0; background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.9) 100%); pointer-events:none; z-index:0; }
@@ -62,10 +62,9 @@ section { position:relative; z-index:2; }
 .social-strip a:hover { color:var(--silver); }
 
 .hero-text > * { opacity:0; transform:translateY(18px); animation:fadeUp .65s ease forwards; }
-.hero-text > *:nth-child(1){animation-delay:.15s}.hero-text > *:nth-child(2){animation-delay:.25s}.hero-text > *:nth-child(3){animation-delay:.35s}.hero-text > *:nth-child(4){animation-delay:.45s}.hero-text > *:nth-child(5){animation-delay:.55s}.hero-text > *:nth-child(6){animation-delay:.63s}.hero-text > *:nth-child(7){animation-delay:.70s}
+.hero-text > *:nth-child(1){animation-delay:.15s}.hero-text > *:nth-child(2){animation-delay:.28s}.hero-text > *:nth-child(3){animation-delay:.38s}.hero-text > *:nth-child(4){animation-delay:.48s}.hero-text > *:nth-child(5){animation-delay:.58s}.hero-text > *:nth-child(6){animation-delay:.66s}.hero-text > *:nth-child(7){animation-delay:.74s}
 @keyframes fadeUp { to{opacity:1;transform:translateY(0)} }
 
-/* Restored Organic Portrait Frame */
 .portrait-wrapper { display:flex; justify-content:center; align-items:center; position:relative; opacity:0; animation:fadeIn 1.1s ease .35s forwards; }
 @keyframes fadeIn { to{opacity:1} }
 .scene { perspective:1000px; width:400px; height:500px; }
@@ -85,17 +84,16 @@ section { position:relative; z-index:2; }
 .badge-bc { bottom:-18px; left:50%; transform:translateX(-50%); animation:bfbc 4.5s ease-in-out 1.1s infinite; }
 @keyframes bf { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
 @keyframes bfbc { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-7px)} }
-
 .pdot { position:absolute; border-radius:50%; pointer-events:none; animation:floatDot linear infinite; }
 @keyframes floatDot { 0%{opacity:0;transform:translate(0,0) scale(1)} 20%{opacity:.8} 80%{opacity:.4} 100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.4)} }
-
-/* Mobile photo */
-.mobile-photo-wrap { display:none; justify-content:center; margin:10px auto 0; }
-.mobile-photo-wrap img { width:160px; height:160px; border-radius:50%; object-fit:cover; object-position:top center; border:2px solid rgba(200,201,204,0.2); filter:grayscale(6%) contrast(1.06) brightness(1.02); display:block; }
-
 .scroll-hint { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; font-size:.58rem; letter-spacing:.28em; color:var(--dimmer); text-transform:uppercase; z-index:10; }
 .scroll-line { width:1px; height:34px; background:linear-gradient(to bottom,var(--silver),transparent); animation:sl 2.2s ease-in-out infinite; }
 @keyframes sl { 0%,100%{opacity:.2} 50%{opacity:.7} }
+
+.mobile-photo-wrapper { display:none; justify-content:center; margin:10px auto 0; }
+.mobile-photo-wrapper img { width:160px; height:160px; border-radius:50%; object-fit:cover; object-position:top center; border:2px solid rgba(200,201,204,0.2); filter:grayscale(6%) contrast(1.06) brightness(1.02); display:block; }
+
+
 
 /* ── SHARED SECTION STYLES ── */
 .section-label { font-size:.6rem; letter-spacing:.32em; text-transform:uppercase; color:var(--dim); display:flex; align-items:center; gap:10px; margin-bottom:40px; }
@@ -896,80 +894,67 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
   },80);
 })();
 
-/* ── Cursor (60fps Hardware-Accelerated translate3d) ── */
 const cursor=document.getElementById('cursor');
 const ring=document.getElementById('cursor-ring');
 let mouseX=window.innerWidth/2, mouseY=window.innerHeight/2;
 let ringX=mouseX, ringY=mouseY;
-
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-}, { passive: true });
-
-function loopCursor() {
-  if (cursor) cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-  ringX += (mouseX - ringX) * 0.18;
-  ringY += (mouseY - ringY) * 0.18;
-  if (ring) ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+document.addEventListener('mousemove',e=>{
+  mouseX=e.clientX; mouseY=e.clientY;
+  cursor.style.left=mouseX+'px'; cursor.style.top=mouseY+'px';
+});
+function loopCursor(){
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+  ring.style.left=ringX+'px'; ring.style.top=ringY+'px';
   requestAnimationFrame(loopCursor);
 }
 requestAnimationFrame(loopCursor);
 
-/* ── Card Mouse Glow (Zero-Reflow Cached Rect) ── */
 document.querySelectorAll('.project-card, .cert-card, .risel-shot-item').forEach(card => {
-  let rect = null;
-  card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); }, { passive: true });
   card.addEventListener('mousemove', e => {
-    if (!rect) rect = card.getBoundingClientRect();
-    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-  }, { passive: true });
-  card.addEventListener('mouseleave', () => { rect = null; }, { passive: true });
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
 });
 
-/* ── Restored 3D Portrait Tilt ── */
-const portraitCard = document.getElementById('portraitCard');
-const scene = document.getElementById('scene');
+const card=document.getElementById('portraitCard');
+const scene=document.getElementById('scene');
 let targetRotX = 0, targetRotY = 0;
 let currentRotX = 0, currentRotY = 0;
-let sceneRect = null;
-
-if (scene) {
-  scene.addEventListener('mouseenter', () => { sceneRect = scene.getBoundingClientRect(); }, { passive: true });
-  scene.addEventListener('mousemove', e => {
-    if (!sceneRect) sceneRect = scene.getBoundingClientRect();
-    const x = (e.clientX - sceneRect.left) / sceneRect.width - 0.5;
-    const y = (e.clientY - sceneRect.top) / sceneRect.height - 0.5;
-    targetRotY = x * 20;
-    targetRotX = -y * 16;
-    const shine = document.getElementById('photoShine');
-    if (shine) shine.style.background = `radial-gradient(circle at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%, rgba(255,255,255,0.14), transparent 65%)`;
-  }, { passive: true });
-  scene.addEventListener('mouseleave', () => {
+if(scene){
+  scene.addEventListener('mousemove',e=>{
+    const r=scene.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    targetRotY = x * 18;
+    targetRotX = -y * 14;
+    const shine=document.getElementById('photoShine');
+    if(shine)shine.style.background=`radial-gradient(circle at ${(x+.5)*100}% ${(y+.5)*100}%,rgba(255,255,255,.12),transparent 65%)`;
+  });
+  scene.addEventListener('mouseleave',()=>{
     targetRotX = 0; targetRotY = 0;
-    sceneRect = null;
-    const shine = document.getElementById('photoShine');
-    if (shine) shine.style.background = '';
-  }, { passive: true });
+    const shine=document.getElementById('photoShine');
+    if(shine)shine.style.background='';
+  });
 }
-
-function animateCard() {
-  currentRotX += (targetRotX - currentRotX) * 0.14;
-  currentRotY += (targetRotY - currentRotY) * 0.14;
-  if (portraitCard) portraitCard.style.transform = `rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
+function animateCard(){
+  currentRotX += (targetRotX - currentRotX) * 0.08;
+  currentRotY += (targetRotY - currentRotY) * 0.08;
+  if(card) card.style.transform=`rotateY(${currentRotY}deg) rotateX(${currentRotX}deg)`;
   requestAnimationFrame(animateCard);
 }
-if (scene) { animateCard(); }
+if(scene){ animateCard(); }
 
-/* ── Restored Floating Dots ── */
-const pw = document.getElementById('portraitWrapper');
-if (pw) {
-  for (let i = 0; i < 10; i++) {
-    const d = document.createElement('div');
-    d.className = 'pdot';
-    const size = Math.random() * 4 + 2;
-    d.style.cssText = `width:${size}px;height:${size}px;background:rgba(200,201,204,${Math.random() * .4 + .1});left:${Math.random() * 100}%;top:${Math.random() * 100}%;--tx:${(Math.random() - .5) * 120}px;--ty:${-(Math.random() * 80 + 40)}px;animation-duration:${Math.random() * 4 + 3}s;animation-delay:${Math.random() * 3}s`;
+const pw=document.getElementById('portraitWrapper');
+if(pw){
+  for(let i=0;i<10;i++){
+    const d=document.createElement('div');
+    d.className='pdot';
+    const size=Math.random()*4+2;
+    d.style.cssText=`width:${size}px;height:${size}px;background:rgba(200,201,204,${Math.random()*.4+.1});left:${Math.random()*100}%;top:${Math.random()*100}%;--tx:${(Math.random()-.5)*120}px;--ty:${-(Math.random()*80+40)}px;animation-duration:${Math.random()*4+3}s;animation-delay:${Math.random()*3}s`;
     pw.appendChild(d);
   }
 }
