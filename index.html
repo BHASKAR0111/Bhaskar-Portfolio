@@ -278,6 +278,7 @@ h2.section-title em { color:var(--silver); font-style:italic; }
   color: rgba(200,201,204,.72);
   pointer-events: none;
 }
+.risel-shot-wide { grid-column: 1 / -1; }
 .risel-stack-row { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(200,201,204,.08); }
 .risel-stack-label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
 .secondary-projects-label {
@@ -681,6 +682,10 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
 
     <!-- Module screenshots grid -->
     <div class="risel-shots-grid">
+      <div class="risel-shot-item" onclick="openLightbox('images/risel/risel-ai-career-coach.png','AI Career Coach')">
+        <img src="images/risel/risel-ai-career-coach.png" alt="Risel AI Career Coach" loading="lazy">
+        <div class="risel-shot-caption">AI Career Coach</div>
+      </div>
       <div class="risel-shot-item" onclick="openLightbox('images/risel/risel-ats-scanner.png','ATS Resume Scanner')">
         <img src="images/risel/risel-ats-scanner.png" alt="Risel ATS Resume Scanner" loading="lazy">
         <div class="risel-shot-caption">ATS Resume Scanner</div>
@@ -693,7 +698,7 @@ footer { padding:40px 80px; border-top:1px solid var(--border); display:flex; ju
         <img src="images/risel/risel-career-roadmap.png" alt="Risel Career Roadmap" loading="lazy">
         <div class="risel-shot-caption">Career Roadmap</div>
       </div>
-      <div class="risel-shot-item" onclick="openLightbox('images/risel/risel-resources.png','Resource Library')">
+      <div class="risel-shot-item risel-shot-wide" onclick="openLightbox('images/risel/risel-resources.png','Resource Library')">
         <img src="images/risel/risel-resources.png" alt="Risel Resource Library" loading="lazy">
         <div class="risel-shot-caption">Resource Library</div>
       </div>
